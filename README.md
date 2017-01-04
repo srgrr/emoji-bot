@@ -1,6 +1,6 @@
 # emogi-bot
 
-A telegram bot that makes emoji-art from a given image (see the example below, meow!).
+A telegram bot that makes emoji-art from a given image (see the example below, meow!). The original idea and implementation is from @JfonS. This repo was originally a fork from JfonS/emogi-bot.
 
 ## Dependencies
 - python 3.x (python 2.x is not guaranteed to work)
