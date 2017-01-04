@@ -15,4 +15,4 @@ A telegram bot that makes emoji-art from a given image (see the example below, m
 - Send a photo. Then wait a second or two... and profit!!!
 
 ## Meow
-![meow](https://github.com/srgrr/emogi-bot/blob/master/resources/jero.jpg "meow!")
+![meow](https://github.com/srgrr/emoji-bot/blob/master/resources/jero.jpg "meow!")
