@@ -1,3 +1,4 @@
+import io
 import os
 import sys
 import numpy as np
@@ -5,11 +6,6 @@ import random
 import telebot
 import requests
 import subprocess
-try:
-	import cStringIO as StringIO
-except:
-	import StringIO
-
 from precompute import get_precomputed_dict
 from scipy import misc
 from scipy.spatial import KDTree
@@ -48,7 +44,7 @@ def handle_images(message):
 		image_file_path = bot.get_file(photo.file_id).file_path
 		local_file_path = os.path.join(os.path.split(sys.argv[0])[0], str(random.randint(0, 2**64 - 1))+".png")
 		image_file = bot.download_file(image_file_path)
-		f = StringIO.StringIO(image_file)
+		f = io.BytesIO(image_file)
 		image_content = misc.imread(f)
 		# get the emoji-art image
 		ret = img2emoji(image_content, image_dict, search_tree)
