@@ -5,6 +5,7 @@ import numpy as np
 import random
 import telebot
 import requests
+import traceback
 import subprocess
 from precompute import get_precomputed_dict
 from scipy import misc
@@ -55,6 +56,7 @@ def handle_images(message):
 		subprocess.Popen(['python', 'file_deleter.py', local_file_path])
 	except:
 		# :(
+		traceback.print_exc()
 		bot.reply_to(message, "Something went wrong. Sorry :(")
 
 bot.polling()
