@@ -16,8 +16,10 @@ This implementation works in O(n^2 + (n^2 / d^2) log m ) by searching the closes
 ## How to run it
 - Get a token from the botFather bot at Telegram
 - Configure your bot (i.e: add commands if you want, etc)
-- Run the following command: python(3) main.py YOUR_TOKEN
+- Run the following command: python(3) main.py YOUR_TOKEN --emoji_resolution R
+  --force_precompute (if wanted)
 - Send a photo. Then wait a second or two... and profit!!!
+
 
 ## Meow
 ![meow](https://github.com/srgrr/emoji-bot/blob/master/resources/jero.jpg "meow!")
