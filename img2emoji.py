@@ -18,7 +18,7 @@ def img2emoji(image_content, image_dict, search_tree = None):
   image_height, image_width, _ = image_content.shape
 
   def sub_mean(i, j):
-    '''Compute the mean color of a subgrid [i, j] X [i + E, i + E].
+    '''Compute the mean color of a subgrid [i, j] X [i + E - 1, i + E - 1].
     We have tried many approaches, and this one seems to be the one that
     works faster. Another possible approach is to compute partial prefix
     sums and output the means in O(1). For some reason, this works slower
@@ -29,7 +29,7 @@ def img2emoji(image_content, image_dict, search_tree = None):
       ret[k] = int(np.mean(image_content[i:i+emoji_height, j:j+emoji_width, k]))
     return tuple(ret)
 
-	# the final image will have sizes multiples of the emoji dimensions
+  # The final image will have sizes multiples of the emoji dimensions
   # If the original image had non-multiple dimensions it will be truncated
   # ("ceiling padding" adds black pixels).
   final_height = emoji_height*(image_height//emoji_height)
