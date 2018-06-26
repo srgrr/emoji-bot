@@ -7,7 +7,8 @@ This algorithm computes the mean color for each subgrid that has the same size a
 This implementation works in O(n^2 + (n^2 / d^2) log m ) by searching the closest emoji in a KD-Tree instead of in a list.
 
 ## Dependencies
-- python 3.x (python 2.x is not guaranteed to work)
+- python 3.x (python 2.x is not guaranteed to work, python2.6 does not work for
+  sure due to argparse)
 - pyTelegramBotApi
 - pillow
 - numpy
