@@ -25,7 +25,7 @@ def precompute(prefix_path):
       raw_array = misc.imread(image)
       for i in range(raw_array.shape[0]):
         for j in range(raw_array.shape[1]):
-          res = sum(raw_array[i,j,k] for k in range(3))
+          res = sum(raw_array[i, j, k] for k in range(3))
           if res == 3*255:
             for k in range(3): raw_array[i, j, k] = 0 
       array_mean = []

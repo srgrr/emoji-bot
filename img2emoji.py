@@ -26,14 +26,14 @@ def img2emoji(image_content, image_dict, search_tree = None):
     '''
     ret = [0]*3
     for k in range(3):
-      ret[k] = int(np.mean(image_content[i:i+emoji_height, j:j+emoji_width, k]))
+      ret[k] = int(np.mean(image_content[i : i + emoji_height, j : j + emoji_width, k]))
     return tuple(ret)
 
   # The final image will have sizes multiples of the emoji dimensions
   # If the original image had non-multiple dimensions it will be truncated
   # ("ceiling padding" adds black pixels).
-  final_height = emoji_height*(image_height//emoji_height)
-  final_width = emoji_width*(image_width//emoji_width)
+  final_height = emoji_height * (image_height // emoji_height)
+  final_width = emoji_width * (image_width // emoji_width)
 
   ret = np.zeros((final_height, final_width, 3), dtype=np.uint8)
 
@@ -43,7 +43,7 @@ def img2emoji(image_content, image_dict, search_tree = None):
       # This search guarantees logarithmic complexity
       nearest_neighbor = search_tree.data[search_tree.query(tuple(subgrid_mean), p = 1)[1]]
       emoji = image_dict[tuple(nearest_neighbor)]
-      ret[i:i+emoji_height, j:j+emoji_width, :] = emoji[:, :, :3]
+      ret[i : i + emoji_height, j : j + emoji_width, :] = emoji[:, :, :3]
 
   # Benchmarking data
   end_time = dt.datetime.now()
