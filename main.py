@@ -22,7 +22,7 @@ def parse_arguments():
   )
   parser.add_argument('TOKEN', help = 'Bot Token (see Telegram BotFather if you do not know what is this')
   parser.add_argument('--emoji_resolution', type = int, default = 9,
-  help = 'Emoji resolution. See resources folder to see available resoultions')
+  help = 'Emoji resolution. See resources folder to see available resolutions')
   parser.add_argument('--force_precompute', action = 'store_true',
   help = 'Recompute the dictionaries and the KDTree')
   return parser.parse_args()
