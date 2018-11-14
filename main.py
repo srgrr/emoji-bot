@@ -8,7 +8,7 @@ import telebot
 import requests
 import traceback
 import subprocess
-import argparse
+import datetime as dt
 from precompute import get_precomputed_dict
 from scipy import misc
 from scipy.spatial import KDTree
@@ -17,6 +17,7 @@ from img2emoji import img2emoji
 def parse_arguments():
   '''Parse command line arguments
   '''
+  import argparse
   parser = argparse.ArgumentParser(
     description = 'A Telegram Bot that converts images to emoji art'
   )
@@ -60,24 +61,41 @@ def main(TOKEN, emoji_resolution, force_precompute):
     If not possible, then a simple message will be displayed instead.
     '''
     try:
+      recv_time = dt.datetime.now()
+      print('************************')
+      print('*** Got new input!!! ***')
+      print('************************')
       # read the image and put it in a np.ndarray
       photo = message.photo[-1]
       image_file_path = bot.get_file(photo.file_id).file_path
-      local_file_path = os.path.join(os.path.split(sys.argv[0])[0], '%s.png'%str(uuid.uuid4()))
+      local_file_path = os.path.join(os.path.split(sys.argv[0])[0], '%s.png' % str(uuid.uuid4()))
       image_file = bot.download_file(image_file_path)
+      imread_time = dt.datetime.now()
+      print('Download \t%.08fs' % ((imread_time - recv_time).microseconds / 1e6))
+
       f = io.BytesIO(image_file)
       image_content = misc.imread(f)
+      toemoji_time = dt.datetime.now()
       # get the emoji-art image
       ret = img2emoji(image_content, image_dict, search_tree)
+      save_time = dt.datetime.now()
+      print('Process \t%.08fs' % ((save_time - imread_time).microseconds / 1e6))
+
       # save the image in png format, then send it
       misc.imsave(local_file_path, ret)
+      send_time = dt.datetime.now()
+      print('Save~~~ \t%.08fs' % ((send_time - save_time).microseconds / 1e6))
+
       send_image = open(local_file_path, 'rb')
       bot.send_photo(message.chat.id, send_image)
+      open_deleter_time = dt.datetime.now()
+      print('Send~~~ \t%.08fs' % ((open_deleter_time - send_time).microseconds / 1e6))
+
       subprocess.Popen([python_interpreter(), 'file_deleter.py', local_file_path])
+
     except:
       # I decided to leave this generic except instead of handling more specific
-      # cases
-      # because the code above can fail for many reasons, but the way to do
+      # case because the bot can fail for many reasons, but the way to go
       # is the same in all cases
       traceback.print_exc()
       bot.reply_to(message, 'Something went wrong. Sorry :(')
