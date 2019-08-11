@@ -24,7 +24,7 @@ class RandomPattern(Pattern):
 
 	def get_pattern_sequence(self):
 		from math import sqrt
-		num_patterns = int((4 * self.height * self.width) / sqrt(self.height * self.emoji_height))
+		num_patterns = int((8 * self.height * self.width) / sqrt(self.height * self.emoji_height))
 
 		for _ in range(num_patterns):
 			from random import randint

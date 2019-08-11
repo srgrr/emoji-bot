@@ -23,4 +23,4 @@ This implementation works in O(n^2 + (n^2 / d^2) log m ) by searching the closes
 
 
 ## Meow
-![meow](https://github.com/srgrr/emoji-bot/blob/master/resources/jero.jpg "meow!")
+![meow](https://github.com/srgrr/emoji-bot/blob/master/resources/jero2.jpeg "meow!")
