@@ -1,5 +1,5 @@
 class DEFAULTS:
-	pass
+	SCALE_FACTOR = 0.5
 
 def _get_parser():
 	from argparse import ArgumentParser
@@ -18,6 +18,13 @@ def _get_parser():
 		"emoji_directory",
 		type = str,
 		help = "Path to directory with emoji images"
+		)
+
+	parser.add_argument(
+		"--scale_factor",
+		type = float,
+		default = DEFAULTS.SCALE_FACTOR,
+		help = "Emoji scale factor"
 		)
 
 	return parser

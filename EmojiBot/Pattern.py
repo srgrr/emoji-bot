@@ -11,25 +11,32 @@ class GridPattern(Pattern):
 	def __init__(self, height, width, emoji_height, emoji_width):
 		Pattern.__init__(self, height, width, emoji_height, emoji_width)
 
-	def get_pattern_sequence():
+	def get_pattern_sequence(self):
 		
-		for i in range(0, height, emoji_height):
-			for j in range(0, width, emoji_width):
-				yield [i, j, i + emoji_height - 1, j + emoji_width - 1]
+		for i in range(0, self.height, self.emoji_height):
+			for j in range(0, self.width, self.emoji_width):
+				yield [i, j, i + self.emoji_height - 1, j + self.emoji_width - 1]
 
 class RandomPattern(Pattern):
 
 	def __init__(self, height, width, emoji_height, emoji_width):
 		Pattern.__init__(self, height, width, emoji_height, emoji_width)	
 
-	def get_pattern_sequence():
-		pass
+	def get_pattern_sequence(self):
+		from math import sqrt
+		num_patterns = int((self.height * self.width) / sqrt(self.height * self.emoji_height))
 
+		for _ in range(num_patterns):
+			from random import randint
+			t = randint(0, self.height - self.emoji_height - 1)
+			l = randint(0, self.width  - self.emoji_width  - 1)
+			yield [t, l, t + self.emoji_height - 1, l + self.emoji_width - 1]
 
-class PatternFactory(object):
+class PatternClassFactory(object):
 	@staticmethod
-	def get_from_string(self, key):
+	def get_from_string(key):
 		if key == "grid":
 			return GridPattern
 		elif key == "random":
 			return RandomPattern
+		raise Exception("Invalid pattern name (received %s)" % key)
