@@ -26,7 +26,7 @@ class Emojifier(object):
 		from scipy import misc
 		
 		image_list = [
-			misc.imresize(misc.imread(image), scale_factor)
+			misc.imread(image)
 			for image in glob.glob(os.path.join(directory, "*"))
 		]
 	
@@ -36,8 +36,12 @@ class Emojifier(object):
 		image_height  = image.shape[0]
 		image_width   = image.shape[1]
 		
-		emoji_height  = self.__images[0].shape[0]
-		emoji_width   = self.__images[0].shape[1]
+		from math import sqrt
+
+		emoji_height_ratio = 0.5 * sqrt(image_height) / float(self.__images[0].shape[0])
+
+		emoji_height  = int(self.__images[0].shape[0] * emoji_height_ratio)
+		emoji_width   = int(self.__images[0].shape[1] * emoji_height_ratio)
 
 		result_height = emoji_height * ((image_height + emoji_height - 1) // emoji_height)
 		result_width  = emoji_width  * ((image_width  + emoji_width  - 1) //  emoji_width)
@@ -64,7 +68,8 @@ class Emojifier(object):
 				self.__tree.data[ self.__tree.query(means, p = 1)[1] ]
 			)
 
-			emoji = self.__mean_dict[nearest_mean]
+			from scipy import misc
+			emoji = misc.imresize( self.__mean_dict[nearest_mean], (emoji_height, emoji_width) )
 			
 			for k in range(3):
 				# superposition rule: emoji has priority over image
