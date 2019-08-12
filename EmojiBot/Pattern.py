@@ -12,7 +12,6 @@ class GridPattern(Pattern):
 		Pattern.__init__(self, height, width, emoji_height, emoji_width)
 
 	def get_pattern_sequence(self):
-		
 		for i in range(0, self.height, self.emoji_height):
 			for j in range(0, self.width, self.emoji_width):
 				yield [i, j, i + self.emoji_height - 1, j + self.emoji_width - 1]
@@ -24,7 +23,7 @@ class RandomPattern(Pattern):
 
 	def get_pattern_sequence(self):
 		from math import sqrt
-		num_patterns = int((8 * self.height * self.width) / sqrt(self.height * self.emoji_height))
+		num_patterns = int((4 * self.height * self.width) / sqrt(self.height * self.emoji_height))
 
 		for _ in range(num_patterns):
 			from random import randint
@@ -33,6 +32,7 @@ class RandomPattern(Pattern):
 			yield [t, l, t + self.emoji_height - 1, l + self.emoji_width - 1]
 
 class PatternClassFactory(object):
+
 	@staticmethod
 	def get_from_string(key):
 		if key == "grid":

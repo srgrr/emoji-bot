@@ -67,9 +67,10 @@ class Emojifier(object):
 			emoji = self.__mean_dict[nearest_mean]
 			
 			for k in range(3):
+				# superposition rule: emoji has priority over image
 				ret[t : b + 1, l : r + 1, k] = \
-					emoji[:, :, 3]/255. * emoji[:, :, k] + \
-					(1.0 - emoji[:, :, 3]/255.) * ret[t : b + 1, l : r + 1, k]
+					emoji[:, :, 3] / 255. * emoji[:, :, k] + \
+					(1.0 - emoji[:, :, 3] / 255.) * ret[t : b + 1, l : r + 1, k]
 
 			ret[t : b + 1, l : r + 1, 3] = np.maximum(ret[t : b + 1, l : r + 1, 3], emoji[:, :, 3])
 

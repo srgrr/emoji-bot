@@ -1,5 +1,6 @@
 class DEFAULTS:
 	SCALE_FACTOR = 0.5
+	PATTERN = "random"
 
 def _get_parser():
 	from argparse import ArgumentParser
@@ -21,10 +22,19 @@ def _get_parser():
 		)
 
 	parser.add_argument(
+		"-s",
 		"--scale_factor",
 		type = float,
 		default = DEFAULTS.SCALE_FACTOR,
 		help = "Emoji scale factor"
+		)
+
+	parser.add_argument(
+		"-p",
+		"--pattern",
+		type = str,
+		default = DEFAULTS.PATTERN,
+		help = "Emoji filling pattern"
 		)
 
 	return parser
