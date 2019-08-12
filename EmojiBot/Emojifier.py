@@ -20,7 +20,7 @@ class Emojifier(object):
 		self.__tree = KDTree(means)
 
 	@staticmethod
-	def create_from_directory(directory, scale_factor = 1.0):
+	def create_from_directory(directory):
 		import glob
 		import os
 		from scipy import misc

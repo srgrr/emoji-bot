@@ -1,8 +1,8 @@
-def main(TOKEN, emoji_directory, scale_factor, pattern):
+def main(TOKEN, emoji_directory, pattern):
 	import telebot
 	bot = telebot.TeleBot(TOKEN)
 	from Emojifier import Emojifier
-	emojifier = Emojifier.create_from_directory(emoji_directory, scale_factor)
+	emojifier = Emojifier.create_from_directory(emoji_directory)
 
 	@bot.message_handler(commands = ["help", "start"])
 	def help(message):

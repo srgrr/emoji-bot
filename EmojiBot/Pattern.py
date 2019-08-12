@@ -21,7 +21,6 @@ class RandomPattern(Pattern):
 	def __init__(self, height, width, emoji_height, emoji_width):
 		Pattern.__init__(self, height, width, emoji_height, emoji_width)	
 
-
 	def get_pattern_sequence(self):
 		from math import sqrt
 		num_patterns = int((6 * self.height * self.width) / sqrt(self.height * self.emoji_height))
