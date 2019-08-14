@@ -1,6 +1,6 @@
 # emoji-bot
 
-A telegram bot which makes emoji-art from a given image (see the example below, meow!). The original idea and implementation is from @JfonS. This repo was originally a fork from JfonS/emogi-bot.
+A telegram bot which makes emoji-art from a given image (see the example below). The original idea and implementation is from @JfonS. This repo was originally a fork from JfonS/emogi-bot.
 
 This implementation works in O(n^2 + (n^2 / d^2) log m ) when applying the grid pattern by searching the closest emoji in a KD-Tree instead of a list.
 
@@ -19,5 +19,5 @@ This implementation works in O(n^2 + (n^2 / d^2) log m ) when applying the grid 
 - Send a photo. Then wait a second or two... and profit!!!
 
 
-## Meow
-![meow](https://github.com/srgrr/emoji-bot/blob/master/resources/jero2.jpeg "meow!")
+## Example
+![Kylo Ren](https://github.com/srgrr/emoji-bot/blob/master/resources/kylo.jpeg "meow!")
