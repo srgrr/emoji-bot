@@ -1,4 +1,4 @@
-def main(TOKEN, emoji_directory, pattern):
+def main(TOKEN, emoji_directory, scale, pattern):
 	import telebot
 	bot = telebot.TeleBot(TOKEN)
 	from Emojifier import Emojifier
@@ -23,7 +23,7 @@ def main(TOKEN, emoji_directory, pattern):
 			from io import BytesIO
 			
 			picture = misc.imread(BytesIO(image_content))
-			result = emojifier.emojify_image(picture, pattern)
+			result = emojifier.emojify_image(picture, scale, pattern)
 			output = BytesIO()
 			misc.imsave(output, result, format = "png")
 			output.seek(0)

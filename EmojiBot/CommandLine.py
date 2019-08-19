@@ -22,6 +22,14 @@ def _get_parser():
 		)
 
 	parser.add_argument(
+		"-s",
+		"--scale",
+		type = float,
+		default = DEFAULTS.SCALE_FACTOR,
+		help = "Emoji scale factor"
+		)
+
+	parser.add_argument(
 		"-p",
 		"--pattern",
 		type = str,

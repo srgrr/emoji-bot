@@ -32,13 +32,13 @@ class Emojifier(object):
 	
 		return Emojifier(image_list)
 
-	def emojify_image(self, image, pattern_key = "grid"):
+	def emojify_image(self, image, scale, pattern_key = "grid"):
 		image_height  = image.shape[0]
 		image_width   = image.shape[1]
 		
 		from math import sqrt
 
-		emoji_height_ratio = 0.5 * sqrt(image_height) / float(self.__images[0].shape[0])
+		emoji_height_ratio = scale * sqrt(image_height) / float(self.__images[0].shape[0])
 
 		emoji_height  = int(self.__images[0].shape[0] * emoji_height_ratio)
 		emoji_width   = int(self.__images[0].shape[1] * emoji_height_ratio)
