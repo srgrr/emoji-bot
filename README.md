@@ -4,20 +4,38 @@ A telegram bot which makes emoji-art from a given image (see the example below).
 
 This implementation works in O(n^2 + (n^2 / d^2) log m ) when applying the grid pattern by searching the closest emoji in a KD-Tree instead of a list.
 
+## Supported platforms
+- Telegram
+
+## WiP
+- Twitter
+
 ## Dependencies
-- python 3.x (python 2.x is not guaranteed to work, python2.6 does not work for
-  sure due to argparse)
-- pyTelegramBotApi
-- pillow
-- numpy
-- scipy
+See requirements.txt
 
 ## How to run it
-- Get a token from the botFather bot at Telegram
-- Configure your bot (i.e: add commands if you want, etc)
-- Run the following command: python(3) main.py YOUR_TOKEN emoji_directory --pattern [grid | random]
-- Send a photo. Then wait a second or two... and profit!!!
+```
+usage: EmojiBot.py [-h] [--telegram_token TELEGRAM_TOKEN]
+                   [--twitter_token TWITTER_TOKEN] [-s SCALE] [-p PATTERN]
+                   emoji_directory
 
+A Multi-Platform Bot to convert images to emoji art
+
+positional arguments:
+  emoji_directory       Path to directory with emoji images
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --telegram_token TELEGRAM_TOKEN
+                        Telegram Bot API Token (see BotFather if you do not
+                        know what is this)
+  --twitter_token TWITTER_TOKEN
+                        OAuth token for Twitter
+  -s SCALE, --scale SCALE
+                        Emoji scale factor
+  -p PATTERN, --pattern PATTERN
+                        Emoji filling pattern
+```
 
 ## Example
 ![Kylo Ren](https://github.com/srgrr/emoji-bot/blob/master/resources/kylo.jpeg "meow!")
