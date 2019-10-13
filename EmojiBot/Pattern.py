@@ -50,6 +50,28 @@ class RandomPattern(Pattern):
                 ]
 
 
+class RandomTimeLimitPattern(Pattern):
+
+    def __init__(self, height, width, emoji_height, emoji_width):
+        Pattern.__init__(self, height, width, emoji_height, emoji_width)
+        import time
+        self.__start_t = time.time()
+
+    def get_pattern_sequence(self):
+        import time
+        while time.time() - self.__start_t < 3.0:
+            from random import randint
+            top = randint(0, self.height - self.emoji_height - 1)
+            left = randint(0, self.width - self.emoji_width - 1)
+            yield \
+                [
+                    top,
+                    left,
+                    top + self.emoji_height - 1,
+                    left + self.emoji_width - 1
+                ]
+
+
 class PatternClassFactory(object):
 
     @staticmethod
@@ -58,4 +80,6 @@ class PatternClassFactory(object):
             return GridPattern
         elif key == 'random':
             return RandomPattern
+        elif key == 'timelimit':
+            return RandomTimeLimitPattern
         raise Exception('Invalid pattern name (received %s)' % key)

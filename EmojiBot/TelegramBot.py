@@ -31,7 +31,7 @@ def telegram_bot(token, emoji_directory, scale, pattern):
             misc.imsave(output, result, format='png')
             output.seek(0)
             bot.send_photo(message.chat.id, output)
-        except e:
+        except Exception as e:
             import traceback
             traceback.print_exc()
             bot.send_message(

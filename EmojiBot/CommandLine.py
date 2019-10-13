@@ -1,6 +1,6 @@
 class DEFAULTS:
-    SCALE_FACTOR = 0.5
-    PATTERN = 'random'
+    SCALE_FACTOR = 0.8
+    PATTERN = 'timelimit'
 
 
 def _get_parser():

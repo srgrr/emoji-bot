@@ -1,11 +1,6 @@
-
-
-# def telegram_bot(telegram_token, emoji_directory, scale, pattern)
-
 def main():
     import CommandLine as CL
     options = CL.parse_arguments()
-    print(dir(options))
     bot_options = {
         'emoji_directory': options.emoji_directory,
         'scale': options.scale,
