@@ -1,8 +1,8 @@
-# emoji-bot
+# Emoji-bot
 
-A telegram bot which makes emoji-art from a given image (see the example below). The original idea and implementation is from @JfonS. This repo was originally a fork from JfonS/emogi-bot.
+A multi-platform bot to make emoji-art from a given image (see the example below).
 
-This implementation works in O(n^2 + (n^2 / d^2) log m ) when applying the grid pattern by searching the closest emoji in a KD-Tree instead of a list.
+This project started as an excuse to find a "practical" application of KD-Trees, a data structure I like a lot.
 
 ## Supported platforms
 - Telegram
