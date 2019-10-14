@@ -59,7 +59,7 @@ class RandomTimeLimitPattern(Pattern):
 
     def get_pattern_sequence(self):
         import time
-        while time.time() - self.__start_t < 3.0:
+        while time.time() - self.__start_t < 60.0:
             from random import randint
             top = randint(0, self.height - self.emoji_height - 1)
             left = randint(0, self.width - self.emoji_width - 1)
