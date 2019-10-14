@@ -22,7 +22,9 @@ def _get_parser():
     parser.add_argument(
         '--twitter_token',
         type=str,
-        help='OAuth token for Twitter'
+        help=('Token bundle for Twitter '
+              'CONSUMER_KEY:CONSUMER_SECRET:'
+              'ACCESS_TOKEN:ACCESS_TOKEN_SECRET')
     )
 
     parser.add_argument(

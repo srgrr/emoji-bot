@@ -30,7 +30,8 @@ optional arguments:
                         Telegram Bot API Token (see BotFather if you do not
                         know what is this)
   --twitter_token TWITTER_TOKEN
-                        OAuth token for Twitter
+                        Token bundle for Twitter CONSUMER_KEY:CONSUMER_SECRET:
+                        ACCESS_TOKEN:ACCESS_TOKEN_SECRET
   -s SCALE, --scale SCALE
                         Emoji scale factor
   -p PATTERN, --pattern PATTERN
