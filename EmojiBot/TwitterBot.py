@@ -27,4 +27,4 @@ def twitter_bot(token, emoji_directory, scale, pattern):
     listener = EmojiListener(api, emojifier)
 
     stream = tweepy.Stream(auth=api.auth, listener=listener)
-    stream.filter(track=['Emojifier1'])
+    stream.filter(track=['EmojiArtsBot'])
