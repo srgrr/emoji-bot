@@ -6,8 +6,6 @@ This project started as an excuse to find a "practical" application of KD-Trees,
 
 ## Supported platforms
 - Telegram
-
-## WiP
 - Twitter
 
 ## Dependencies
