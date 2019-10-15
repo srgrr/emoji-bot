@@ -1,6 +1,7 @@
 __pycache__
 *.pyc
 resources/precalc/*
-.result.png
+sample.png
+result.png
 .idea
 *.swp

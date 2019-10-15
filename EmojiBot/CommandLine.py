@@ -28,6 +28,14 @@ def _get_parser():
     )
 
     parser.add_argument(
+        '--benchmark_image',
+        type=str,
+        help=(
+            'Process a single image '
+            ' for testing purposes')
+    )
+
+    parser.add_argument(
         'emoji_directory',
         type=str,
         help='Path to directory with emoji images'
@@ -53,11 +61,17 @@ def _get_parser():
 
 
 def _check_arguments(options):
-    from argparse import ArgumentTypeError
-    if not (options.telegram_token or options.twitter_token):
-        raise ArgumentTypeError('At least one platform token is necessary')
-    if options.telegram_token and options.twitter_token:
-        raise ArgumentTypeError('Multiple tokens provided')
+    tokens =\
+        [
+            options.telegram_token,
+            options.twitter_token,
+            options.benchmark_image
+        ]
+    if sum(int(x is not None) for x in tokens) != 1:
+        from argparse import ArgumentTypeError
+        raise ArgumentTypeError(
+            'At least one platform token or image benchmark is necessary'
+        )
 
 
 def parse_arguments():

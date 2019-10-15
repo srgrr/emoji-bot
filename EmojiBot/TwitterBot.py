@@ -10,7 +10,7 @@ BOT_NAME = 'EmojiArtsBot'
 
 class EmojiListener(tweepy.StreamListener):
     def __init__(self, api, emojifier, scale, pattern):
-        self.api = api
+        super().__init__(api)
         self.emojifier = emojifier
         self.scale = scale
         self.pattern = pattern
