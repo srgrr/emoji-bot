@@ -17,6 +17,7 @@ class EmojiListener(tweepy.StreamListener):
 
     def on_status(self, status):
         tweet_author = status.author.screen_name
+        print('Received tweet from %s' % tweet_author)
         if tweet_author == BOT_NAME and 'First' not in status.text:
             return
         try:
