@@ -37,12 +37,12 @@ class EmojiListener(tweepy.StreamListener):
                         for media in status.entities.get('media', [])
                     ]
             if answer:
-                for photo in answer:
+                for (i, photo) in enumerate(answer):
                     photo_stream = io.BytesIO()
                     misc.imsave(photo_stream, photo, format='png')
                     photo_stream.seek(0)
                     self.api.update_with_media(
-                        'image.png',
+                        'image_%d.png' % i,
                         file=photo_stream,
                         in_reply_to_status_id=status.id_str
                     )
