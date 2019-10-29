@@ -44,7 +44,7 @@ class EmojiListener(tweepy.StreamListener):
                     self.api.update_with_media(
                         'image_%d.png' % i,
                         file=photo_stream,
-                        in_reply_to_status_id=status.id_str
+                        in_reply_to_status_id=status.id
                     )
 
         except Exception as e:
