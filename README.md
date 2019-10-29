@@ -23,7 +23,7 @@ positional arguments:
   emoji_directory       Path to directory with emoji images
 
 optional arguments:
-  -h, --help            Show this help message and exit
+  -h, --help            show this help message and exit
   --telegram_token TELEGRAM_TOKEN
                         Telegram Bot API Token (see BotFather if you do not
                         know what is this)
