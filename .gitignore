@@ -3,5 +3,6 @@ __pycache__/
 resources/precalc/*
 sample.png
 result.png
+venv/
 .idea
 *.swp
