@@ -82,4 +82,4 @@ class PatternClassFactory(object):
             return RandomPattern
         elif key == 'timelimit':
             return RandomTimeLimitPattern
-        raise Exception('Invalid pattern name (received %s)' % key)
+        raise Exception(f'Invalid pattern name (received {key})')

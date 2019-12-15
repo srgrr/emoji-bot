@@ -17,7 +17,6 @@ class EmojiListener(tweepy.StreamListener):
 
     def on_status(self, status):
         tweet_author = status.author.screen_name
-        print('Received tweet from %s' % tweet_author)
         if tweet_author == BOT_NAME and 'First' not in status.text:
             return
         try:
@@ -42,7 +41,7 @@ class EmojiListener(tweepy.StreamListener):
                     misc.imsave(photo_stream, photo, format='png')
                     photo_stream.seek(0)
                     self.api.update_with_media(
-                        'image_%d.png' % i,
+                        f'image_{i}.png',
                         file=photo_stream,
                         in_reply_to_status_id=status.id
                     )
