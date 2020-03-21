@@ -1,6 +1,6 @@
 class DEFAULTS:
-    SCALE_FACTOR = 0.8
-    PATTERN = 'timelimit'
+    SCALE_FACTOR = 1.0
+    PATTERN = 'grid'
 
 
 def _get_parser():

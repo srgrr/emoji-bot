@@ -29,11 +29,11 @@ class Emojifier(object):
     def create_from_directory(directory):
         import glob
         import os
-        from scipy import misc
+        import imageio
 
         image_list = \
             [
-                misc.imread(image)
+                imageio.imread(image)
                 for image in glob.glob(os.path.join(directory, '*'))
             ]
 

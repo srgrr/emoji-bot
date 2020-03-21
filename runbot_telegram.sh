@@ -1,2 +1,3 @@
 #!/bin/bash
+set -x
 python EmojiBot/EmojiBot.py resources/emojis72 --telegram_token=${EMOJI_TELEGRAM_TOKEN} --scale=0.75

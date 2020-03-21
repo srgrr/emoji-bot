@@ -2,7 +2,7 @@ import io
 import tweepy
 import requests
 import traceback
-from scipy import misc
+import imageio
 
 
 BOT_NAME = 'EmojiArtsBot'
@@ -15,6 +15,7 @@ class EmojiListener(tweepy.StreamListener):
         self.scale = scale
         self.pattern = pattern
 
+
     def on_status(self, status):
         tweet_author = status.author.screen_name
         if tweet_author == BOT_NAME and 'First' not in status.text:
@@ -23,7 +24,7 @@ class EmojiListener(tweepy.StreamListener):
             answer =\
                     [
                         self.emojifier.emojify_image(
-                            misc.imread(
+                            imageio.imread(
                                 io.BytesIO(
                                     requests.get(
                                         media.get('media_url')
@@ -38,7 +39,7 @@ class EmojiListener(tweepy.StreamListener):
             if answer:
                 for (i, photo) in enumerate(answer):
                     photo_stream = io.BytesIO()
-                    misc.imsave(photo_stream, photo, format='png')
+                    imageio.imsave(photo_stream, photo, format='png')
                     photo_stream.seek(0)
                     self.api.update_with_media(
                         f'image_{i}.png',

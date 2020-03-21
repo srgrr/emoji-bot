@@ -1,4 +1,4 @@
-from scipy.misc import imread, imsave
+from imageio import imread, imsave
 from Emojifier import Emojifier
 
 
