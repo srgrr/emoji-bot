@@ -76,9 +76,11 @@ class Emojifier(object):
                 ]
             )
 
+            from random import randint
+
             nearest_mean = tuple(
                 self.__tree.data[
-                    self.__tree.query(means, p=1)[1]
+                    self.__tree.query(means, p=1, k=5)[1][randint(0, 4)]
                 ]
             )
 
