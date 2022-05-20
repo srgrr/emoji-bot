@@ -9,9 +9,6 @@ def main():
     if options.telegram_token:
         from TelegramBot import telegram_bot as bot_main
         bot_options['token'] = options.telegram_token
-    elif options.twitter_token:
-        from TwitterBot import twitter_bot as bot_main
-        bot_options['token'] = options.twitter_token
     elif options.benchmark_image:
         from BenchmarkImage import benchmark_image as bot_main
         bot_options['token'] = options.benchmark_image

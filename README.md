@@ -6,7 +6,6 @@ This project started as an excuse to find a "practical" application of KD-Trees,
 
 ## Supported platforms
 - Telegram
-- Twitter
 
 ## Dependencies
 See requirements.txt
@@ -14,7 +13,7 @@ See requirements.txt
 ## How to run it
 ```
 usage: EmojiBot.py [-h] [--telegram_token TELEGRAM_TOKEN]
-                   [--twitter_token TWITTER_TOKEN] [-s SCALE] [-p PATTERN]
+                   [--benchmark_image BENCHMARK_IMAGE] [-s SCALE] [-p PATTERN]
                    emoji_directory
 
 A Multi-Platform Bot to convert images to emoji art
@@ -27,9 +26,8 @@ optional arguments:
   --telegram_token TELEGRAM_TOKEN
                         Telegram Bot API Token (see BotFather if you do not
                         know what is this)
-  --twitter_token TWITTER_TOKEN
-                        Token bundle for Twitter CONSUMER_KEY:CONSUMER_SECRET:
-                        ACCESS_TOKEN:ACCESS_TOKEN_SECRET
+  --benchmark_image BENCHMARK_IMAGE
+                        Process a single image for testing purposes
   -s SCALE, --scale SCALE
                         Emoji scale factor
   -p PATTERN, --pattern PATTERN
