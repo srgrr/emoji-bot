@@ -61,7 +61,7 @@ def _check_arguments(options):
     if sum(int(x is not None) for x in tokens) != 1:
         from argparse import ArgumentTypeError
         raise ArgumentTypeError(
-            'At least one platform token or image benchmark is necessary'
+            'Exactly one platform token or image benchmark is necessary'
         )
 
 
