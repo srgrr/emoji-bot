@@ -1,10 +1,19 @@
+import numpy as np
+import glob
+import os
+import imageio
+from scipy.spatial import KDTree
+from scipy import misc
+from math import sqrt
+from Pattern import PatternClassFactory
+from random import randint
+
+
 class Emojifier(object):
 
     def __init__(self, image_list):
 
         self.__images = image_list
-
-        import numpy as np
 
         # Only RGB are important when considering the nearest image
         # Discard alphas
@@ -21,15 +30,10 @@ class Emojifier(object):
                 in zip(means, self.__images)
             ]
         )
-
-        from scipy.spatial import KDTree
         self.__tree = KDTree(means)
 
     @staticmethod
     def create_from_directory(directory):
-        import glob
-        import os
-        import imageio
 
         image_list = \
             [
@@ -43,8 +47,6 @@ class Emojifier(object):
         image_height = image.shape[0]
         image_width = image.shape[1]
 
-        from math import sqrt
-
         emoji_height_ratio = \
             scale * sqrt(image_height) / float(self.__images[0].shape[0])
 
@@ -56,15 +58,12 @@ class Emojifier(object):
         result_width = \
             emoji_width * ((image_width + emoji_width - 1) // emoji_width)
 
-        from Pattern import PatternClassFactory
         pattern = PatternClassFactory.get_from_string(pattern_key)(
             result_height,
             result_width,
             emoji_height,
             emoji_width
         )
-
-        import numpy as np
 
         ret = np.zeros((result_height, result_width, 4))
 
@@ -76,7 +75,7 @@ class Emojifier(object):
                 ]
             )
 
-            from random import randint
+
 
             nearest_mean = tuple(
                 self.__tree.data[
@@ -84,7 +83,6 @@ class Emojifier(object):
                 ]
             )
 
-            from scipy import misc
             emoji = \
                 misc.imresize(
                     self.__mean_dict[nearest_mean],

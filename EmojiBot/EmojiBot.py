@@ -1,5 +1,7 @@
+import CommandLine as CL
+
+
 def main():
-    import CommandLine as CL
     options = CL.parse_arguments()
     bot_options = {
         'emoji_directory': options.emoji_directory,

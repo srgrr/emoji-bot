@@ -1,11 +1,12 @@
+from argparse import ArgumentParser, ArgumentTypeError
+
+
 class DEFAULTS:
     SCALE_FACTOR = 1.0
     PATTERN = 'grid'
 
 
 def _get_parser():
-    from argparse import ArgumentParser
-
     parser = ArgumentParser(
         description='A Multi-Platform Bot to convert images to emoji art'
         )
@@ -59,7 +60,6 @@ def _check_arguments(options):
             options.benchmark_image
         ]
     if sum(int(x is not None) for x in tokens) != 1:
-        from argparse import ArgumentTypeError
         raise ArgumentTypeError(
             'Exactly one platform token or image benchmark is necessary'
         )

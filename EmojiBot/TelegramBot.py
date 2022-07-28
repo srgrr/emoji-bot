@@ -1,7 +1,12 @@
+import telebot
+import traceback
+from Emojifier import Emojifier
+from scipy import misc
+from io import BytesIO
+
+
 def telegram_bot(token, emoji_directory, scale, pattern):
-    import telebot
     bot = telebot.TeleBot(token)
-    from Emojifier import Emojifier
     emojifier = Emojifier.create_from_directory(emoji_directory)
 
     @bot.message_handler(commands=['help', 'start'])
@@ -21,10 +26,6 @@ def telegram_bot(token, emoji_directory, scale, pattern):
             photo = message.photo[-1]
             image_file_path = bot.get_file(photo.file_id).file_path
             image_content = bot.download_file(image_file_path)
-
-            from scipy import misc
-            from io import BytesIO
-
             picture = misc.imread(BytesIO(image_content))
             result = emojifier.emojify_image(picture, scale, pattern)
             output = BytesIO()
@@ -32,7 +33,6 @@ def telegram_bot(token, emoji_directory, scale, pattern):
             output.seek(0)
             bot.send_photo(message.chat.id, output)
         except Exception as e:
-            import traceback
             traceback.print_exc()
             bot.send_message(
                 message.chat.id,

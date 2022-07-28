@@ -1,3 +1,8 @@
+import time
+from math import sqrt
+from random import randint
+
+
 class Pattern(object):
 
     def __init__(self, height, width, emoji_height, emoji_width):
@@ -30,7 +35,6 @@ class RandomPattern(Pattern):
         Pattern.__init__(self, height, width, emoji_height, emoji_width)
 
     def get_pattern_sequence(self):
-        from math import sqrt
         num_patterns = \
             int(
                 (4.5 * self.height * self.width)
@@ -38,7 +42,6 @@ class RandomPattern(Pattern):
             )
 
         for _ in range(num_patterns):
-            from random import randint
             top = randint(0, self.height - self.emoji_height - 1)
             left = randint(0, self.width - self.emoji_width - 1)
             yield \
@@ -54,13 +57,10 @@ class RandomTimeLimitPattern(Pattern):
 
     def __init__(self, height, width, emoji_height, emoji_width):
         Pattern.__init__(self, height, width, emoji_height, emoji_width)
-        import time
         self.__start_t = time.time()
 
     def get_pattern_sequence(self):
-        import time
         while time.time() - self.__start_t < 60.0:
-            from random import randint
             top = randint(0, self.height - self.emoji_height - 1)
             left = randint(0, self.width - self.emoji_width - 1)
             yield \
