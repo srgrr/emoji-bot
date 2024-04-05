@@ -3,10 +3,10 @@ import glob
 import os
 import imageio
 from scipy.spatial import KDTree
-from scipy import misc
 from math import sqrt
 from Pattern import PatternClassFactory
 from random import randint
+from PIL import Image
 
 
 class Emojifier(object):
@@ -84,10 +84,11 @@ class Emojifier(object):
             )
 
             emoji = \
-                misc.imresize(
-                    self.__mean_dict[nearest_mean],
-                    (emoji_height, emoji_width)
-                )
+              np.array(
+                Image.fromarray(
+                  self.__mean_dict[nearest_mean]
+                ).resize((emoji_height, emoji_width))
+              )
 
             for k in range(3):
                 # superposition rule: emoji has priority over image
